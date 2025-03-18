@@ -17,7 +17,7 @@
   padding:20px;
   width:100%;
  }
-
+/* Header */
 .mylogo{
   width: 30px;
   height: 30px;
@@ -30,7 +30,6 @@
   display: grid;
   grid-template-columns: repeat(4,150px) 140px;
   grid-gap: 10px;
-  /* background-color: #333; */
   color: white;
   align-items: center;
 }
@@ -44,5 +43,35 @@
   height: 20px;
   position: absolute;
   top: 6.5%;
-  right: 60px;
+  right: 300px;
 }
+/* body */
+.btn:hover{
+  /*  zoom in */
+  transform: scale(1.03);
+  transition: transform 0.1s;
+}
+.container{
+  margin-left:calc(100% - 95%);
+}
+.container .desc{
+  margin-top: 50px;
+  color: white;
+}
+span{
+  color: #ffc668;
+  font-size: 30px;
+  font-weight: bold;
+}
+ul{
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+ul li{
+  margin-right: 20px;
+  color:white
+}
+
+
