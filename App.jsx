@@ -1,5 +1,6 @@
 import logo from "./images/logo.png";
 import { FaSearch } from "react-icons/fa";
+import { SocialIcon } from 'react-social-icons';
 import {useState} from "react";
 
 const name = "Islam Achrouf" ;
@@ -14,9 +15,10 @@ export default function MyApp() {
       <p className="desc"  style={{ whiteSpace: "pre-line" }}>
         I'M <span>{name}</span> {"\n"}
         {desc} {"\n"}
-    </p> 
-    <MyBtn />
- </div>
+       </p> 
+    </div>
+      <MyBtn />
+
   </>
   );
 }
@@ -48,36 +50,45 @@ function Header(){
     </>
   );
 }
+
 const mylinks = [
-  { id: 1, name: "GitHub", url: "https://github.com/islam80012" },
-  { id: 2, name: "Linkedin", url: "www.linkedin.com/in/islam-achrouf-8902742b9" },
+  { id: 1, name: "Github", url: "https://github.com/islam80012" },
+  { id: 2, name: "Linkedin", url: "https://www.linkedin.com/in/islam-achrouf-8902742b9" },
   { id: 3, name: "Instagram", url: "https://www.instagram.com/achroufislam" },
-  { id: 4, name: "Email", url: "mailto:islamachrouf20042gmail.com" },
+  { id: 4, name: "Email", url: "mailto:islamachrouf2004@gmail.com" },
 ];
-function MyBtn(){
-  function MyLinks(){
-    return(
-      <ul>
-        {mylinks.map((link) => (
-          <li 
-          key = {link.id}> <a href={link.url} target="_blank" rel="noreferrer">{link}</a> 
-          </li>
-        ))}
-      </ul>
-    );
-  }
-  return(
-    <button  className="btn"
-    style={{
-      backgroundColor: "transparent",
-      color: "#ffc668",
-      padding: "15px",
-      borderRadius: "5px",
-      cursor: "pointer",
-      boxShadow: "0 0 4px #ffc668",
-      }}
-      Onlick= {MyLinks()}>
-        Contact Me </button>
+function MyBtn() {
+  const [selectedId, setSelectedId] = useState(null); // Déclaration de l'état
+  const [setActive, setIsActive] = useState(null); // Déclaration de l'état
+  const div = document.querySelector(".contactme");
+
+  return (
+    <>
+    <div className={ setActive ? "active" : "inactive"}>
+      <button
+        className ="btn"       
+        onClick={() => {
+          setSelectedId((prev) => (prev === null ? 1 : null)); // Active/Désactive l'affichage
+          setIsActive(!setActive);
+        }}
+      >
+        Contact Me
+      </button>
+  
+      {/* Affichage des liens si un élément est sélectionné */}
+      {selectedId !== null && (
+        <div className="links">
+          <ul>
+            {mylinks.map((link) => (
+                <li key={link.id} onClick={() => setSelectedId(link.id)}>
+                <SocialIcon className ='socIcons'url={link.url} />             
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+    </>
   );
 }
 
