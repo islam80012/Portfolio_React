@@ -2,13 +2,18 @@ import logo from "./images/logo.png";
 import { FaSearch } from "react-icons/fa";
 import { SocialIcon } from 'react-social-icons';
 import {useState} from "react";
+import { FaPython, FaJs, FaJava, FaReact, FaHtml5, FaCss3Alt ,FaGithub} from "react-icons/fa";
+import { SiC, SiMysql } from "react-icons/si"; 
 
 const name = "Islam Achrouf" ;
 const desc = "Information Systems & Software Engineering";
+
+//===================== Main Component ===================== 
+
 export default function MyApp() {
   return (
   <>
-  <div className="header">
+   <div className="header">
    <Header />
    </div>
    <div className="container">
@@ -18,10 +23,21 @@ export default function MyApp() {
        </p> 
     </div>
       <MyBtn />
-
-  </>
+      <div className="About">
+      <h2>About Me</h2>
+      <p>Hi, I am {name}, a 20 years old Computer Science student specializing in Software Engineering. I have some
+        experience in graphical user interfaces and front-end development , Basically i speak 3 languages : Arabic, French and English .</p>
+    </div>
+    <div className="container">
+      <h2>My Skills</h2>
+      <div className="MySkills">
+          <TechIcons />
+      </div>  
+    </div>
+   </>
   );
 }
+// ===================== Header function =====================
 const menuItems = ["About", "Portfolio", "Contact","Search"];
 
 function Header(){
@@ -50,7 +66,7 @@ function Header(){
     </>
   );
 }
-
+// ===================== Contact me function =====================
 const mylinks = [
   { id: 1, name: "Github", url: "https://github.com/islam80012" },
   { id: 2, name: "Linkedin", url: "https://www.linkedin.com/in/islam-achrouf-8902742b9" },
@@ -89,6 +105,30 @@ function MyBtn() {
       )}
     </div>
     </>
+  );
+}
+// ===================== My skills  function =====================
+const icons = [
+  { id: 1, component: <FaPython title="Python" color="#3776AB" />, name: "Python" },
+  { id: 2, component: <FaJs title="JavaScript" color="#F7DF1E" />, name: "JavaScript" },
+  { id: 3, component: <FaJava title="Java" color="#007396" />, name: "Java" },
+  { id: 4, component: <FaReact title="React" color="#61DAFB" />, name: "React" },
+  { id: 5, component: <FaHtml5 title="HTML5" color="#E34F26" />, name: "HTML5" },
+  { id: 6, component: <FaCss3Alt title="CSS3" color="#1572B6" />, name: "CSS3" },
+  { id: 7, component: <FaGithub title="GitHub" />, name: "GitHub" },
+  { id: 8, component: <SiC title="C Programming" />, name: "C" },
+  { id: 9, component: <SiMysql title="SQL" />, name: "SQL" }
+];
+
+function TechIcons() {
+  return (
+    <>
+      {icons.map((icon) => (
+        <div key={icon.id} className="tech">
+          {icon.component}
+        </div>
+      ))}
+  </>
   );
 }
 
